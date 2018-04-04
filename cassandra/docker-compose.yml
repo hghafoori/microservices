@@ -1,0 +1,16 @@
+version: '3'
+services:
+  cassandra:
+    image: cassandra:3.11.1
+    ports:
+     - "7000:7000"
+     - "7001:7001"
+     - "9042:9042"
+    container_name: cassandra
+    volumes:
+     - ./.cassandra:/var/lib/cassandra
+  microservice:
+    image: microservive:01
+    ports:
+     - "8090:8090"
+    container_name: microservice
