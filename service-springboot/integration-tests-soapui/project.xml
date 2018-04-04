@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="720e1a99-32f9-4d5b-b7e3-34d2816df967"
+	activeEnvironment="Default" name="REST Project 1" resourceRoot=""
+	soapui-version="5.3.0" xmlns:con="http://eviware.com/soapui/config">
+	<con:settings />
+	<con:interface xsi:type="con:RestService"
+		id="462f7148-a690-4282-94dd-9da36c221a8d" wadlVersion="http://wadl.dev.java.net/2009/02"
+		name="http://localhost:8080" type="rest"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<con:settings />
+		<con:definitionCache type="TEXT" rootPart="" />
+		<con:endpoints>
+			<con:endpoint>http://localhost:8080</con:endpoint>
+		</con:endpoints>
+		<con:resource name="Greeting" path="/greeting"
+			id="57bf1687-31e6-4306-9de8-a8513adf871b">
+			<con:settings />
+			<con:parameters />
+			<con:method name="Greeting" id="c781fc25-f5a3-4780-b11f-8d129c1471aa"
+				method="GET">
+				<con:settings />
+				<con:parameters>
+					<con:parameter>
+						<con:name>name</con:name>
+						<con:value />
+						<con:style>QUERY</con:style>
+						<con:default />
+					</con:parameter>
+				</con:parameters>
+				<con:representation type="RESPONSE">
+					<con:mediaType>application/json;charset=UTF-8</con:mediaType>
+					<con:status>200</con:status>
+					<con:params />
+					<con:element xmlns:gre="http://localhost/greeting">gre:Response</con:element>
+				</con:representation>
+				<con:request name="Request" id="6009feba-9e6e-4c7e-8a31-a58e2b659b92"
+					mediaType="application/json">
+					<con:settings>
+						<con:setting
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+					</con:settings>
+					<con:endpoint>http://localhost:8080</con:endpoint>
+					<con:request />
+					<con:originalUri>http://localhost/greeting</con:originalUri>
+					<con:credentials>
+						<con:authType>No Authorization</con:authType>
+					</con:credentials>
+					<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+					<con:jmsPropertyConfig />
+					<con:parameters>
+						<entry key="name" value="" xmlns="http://eviware.com/soapui/config" />
+					</con:parameters>
+					<con:parameterOrder>
+						<con:entry>name</con:entry>
+					</con:parameterOrder>
+				</con:request>
+				<con:request name="RequestWithNameParams" id="0d9062f5-f852-4562-921f-f00b100ad292"
+					mediaType="application/json">
+					<con:settings>
+						<con:setting
+							id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+					</con:settings>
+					<con:endpoint>http://localhost:8080</con:endpoint>
+					<con:request />
+					<con:originalUri>http://localhost/greeting</con:originalUri>
+					<con:credentials>
+						<con:authType>No Authorization</con:authType>
+					</con:credentials>
+					<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+					<con:jmsPropertyConfig />
+					<con:parameters>
+						<entry key="name" value="haroon" xmlns="http://eviware.com/soapui/config" />
+					</con:parameters>
+					<con:parameterOrder>
+						<con:entry>name</con:entry>
+					</con:parameterOrder>
+				</con:request>
+			</con:method>
+		</con:resource>
+	</con:interface>
+	<con:testSuite id="b439270b-a4e1-4d2c-a61f-2995f28c0921"
+		name="Positive cases">
+		<con:settings />
+		<con:runType>SEQUENTIAL</con:runType>
+		<con:testCase id="d8989794-364b-41c1-b200-e03539d5d755"
+			failOnError="true" failTestCaseOnErrors="true" keepSession="false"
+			maxResults="0" name="GreetWithoutName" searchProperties="true">
+			<con:settings />
+			<con:testStep type="restrequest" name="Greeting - Request"
+				id="9cf831e8-ac76-4cc4-9908-825dac8053bd">
+				<con:settings />
+				<con:config service="http://localhost:8080" resourcePath="/greeting"
+					methodName="Greeting" xsi:type="con:RestRequestStep"
+					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+					<con:restRequest name="Greeting 1 - Request 1"
+						id="6009feba-9e6e-4c7e-8a31-a58e2b659b92" mediaType="application/json">
+						<con:settings>
+							<con:setting
+								id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+						</con:settings>
+						<con:endpoint>http://localhost:8080</con:endpoint>
+						<con:request />
+						<con:originalUri>http://localhost/greeting</con:originalUri>
+						<con:assertion type="JsonPath Match"
+							id="b52974cc-bb2c-4309-b60e-c66d73d61096" name="JsonPath Match">
+							<con:configuration>
+								<path />
+								<content />
+								<allowWildcards>false</allowWildcards>
+								<ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+								<ignoreComments>false</ignoreComments>
+							</con:configuration>
+						</con:assertion>
+						<con:credentials>
+							<con:authType>No Authorization</con:authType>
+						</con:credentials>
+						<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+						<con:jmsPropertyConfig />
+						<con:parameters />
+						<con:parameterOrder>
+							<con:entry>name</con:entry>
+						</con:parameterOrder>
+					</con:restRequest>
+				</con:config>
+			</con:testStep>
+			<con:properties />
+		</con:testCase>
+		<con:testCase id="f6b10bc3-866f-4aba-8c25-288dbfd9f591"
+			failOnError="true" failTestCaseOnErrors="true" keepSession="false"
+			maxResults="0" name="GreetingWithName" searchProperties="true">
+			<con:settings />
+			<con:testStep type="restrequest" name="Greeting With Name Request"
+				id="22012b33-54db-4a28-acfb-fb8a282c31e0">
+				<con:settings />
+				<con:config service="http://localhost:8080" methodName="Greeting"
+					resourcePath="/greeting" xsi:type="con:RestRequestStep"
+					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+					<con:restRequest name="Greeting With Name Request"
+						id="003b0ef7-7170-4d2f-a17d-4b2058ef8c2e" mediaType="application/json">
+						<con:settings>
+							<con:setting
+								id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+						</con:settings>
+						<con:encoding>UTF-8</con:encoding>
+						<con:endpoint>http://localhost:8080</con:endpoint>
+						<con:request />
+						<con:originalUri>http://localhost/greeting</con:originalUri>
+						<con:assertion type="JsonPath Match"
+							id="6da2c4e9-1612-451a-a41b-f28788911c93" name="JsonPath Match">
+							<con:configuration>
+								<path>$.content</path>
+								<content>Hello, haroon!</content>
+								<allowWildcards>false</allowWildcards>
+								<ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+								<ignoreComments>false</ignoreComments>
+							</con:configuration>
+						</con:assertion>
+						<con:credentials>
+							<con:authType>No Authorization</con:authType>
+						</con:credentials>
+						<con:jmsConfig JMSDeliveryMode="PERSISTENT" />
+						<con:jmsPropertyConfig />
+						<con:parameters>
+							<entry key="name" value="haroon" xmlns="http://eviware.com/soapui/config" />
+						</con:parameters>
+						<con:parameterOrder>
+							<con:entry>name</con:entry>
+						</con:parameterOrder>
+					</con:restRequest>
+				</con:config>
+			</con:testStep>
+			<con:properties />
+		</con:testCase>
+		<con:properties />
+	</con:testSuite>
+	<con:properties />
+	<con:wssContainer />
+	<con:oAuth2ProfileContainer />
+	<con:oAuth1ProfileContainer />
+	<con:sensitiveInformation />
+</con:soapui-project>

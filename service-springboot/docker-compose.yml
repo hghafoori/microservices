@@ -1,0 +1,7 @@
+version: '3'
+services:
+  microservice:
+    image: microservice:1
+    ports:
+     - "8090:8090"
+    container_name: microservice
